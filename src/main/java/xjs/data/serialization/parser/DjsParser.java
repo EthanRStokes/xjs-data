@@ -237,8 +237,8 @@ public class DjsParser extends CommentedTokenParser {
         }
         final String text = t.parsed();
         return switch (text) {
-            case "infinity" -> new JsonNumber(Double.POSITIVE_INFINITY);
-            case "-infinity" -> new JsonNumber(Double.NEGATIVE_INFINITY);
+            case "infinity", "Infinity" -> new JsonNumber(Double.POSITIVE_INFINITY);
+            case "-infinity", "-Infinity" -> new JsonNumber(Double.NEGATIVE_INFINITY);
             case "true" -> JsonLiteral.jsonTrue();
             case "false" -> JsonLiteral.jsonFalse();
             case "null" -> JsonLiteral.jsonNull();

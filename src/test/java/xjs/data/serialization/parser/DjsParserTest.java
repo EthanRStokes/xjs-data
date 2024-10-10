@@ -43,6 +43,9 @@ public final class DjsParserTest extends CommonParserTest {
         assertEquals(Double.POSITIVE_INFINITY, this.parse("infinity").asDouble());
         assertEquals(Double.NEGATIVE_INFINITY, this.parse("-infinity").asDouble());
 
+        assertEquals(Double.POSITIVE_INFINITY, this.parse("Infinity").asDouble());
+        assertEquals(Double.NEGATIVE_INFINITY, this.parse("-Infinity").asDouble());
+
         assertThrows(SyntaxException.class, () -> this.parse("-infinityy"));
     }
 

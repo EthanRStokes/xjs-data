@@ -408,15 +408,30 @@ public abstract class PositionTrackingReader implements Closeable {
      * @throws IOException If the underlying reader throws an exception.
      */
     public boolean readInfinity() throws IOException {
-        char[] infinity = new char[]{'i', 'n', 'f', 'i', 'n', 'i', 't', 'y'};
-        for (char c : infinity) {
+        if (this.current == 'I') {
+            return readCharacters(new char[]{'I', 'n', 'f', 'i', 'n', 'i', 't', 'y'});
+        }
+        return readCharacters(new char[]{'i', 'n', 'f', 'i', 'n', 'i', 't', 'y'});
+    }
+
+    /**
+     * Reads the character array {} from the current index. If
+     * the reader encounters a syntax error, a {@link SyntaxException}
+     * will be thrown.
+     *
+     * @param chars The character array to read
+     * @return true, if the content from the current index is exactly the given array.
+     * @throws IOException If the underlying reader throws an exception.
+     */
+    public boolean readCharacters(char[] chars) throws IOException {
+        for (char c : chars) {
             if (!this.readIf(c)) {
                 return false;
             }
         }
 
         // check if it is exactly "infinity", not "infinityy" or similar
-        if (this.readIf('y')) {
+        if (this.current != -1 && !this.isWhitespace()) {
             throw this.unexpected('y');
         }
         return true;
