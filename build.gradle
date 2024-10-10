@@ -49,13 +49,13 @@ sourceSets {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier 'javadoc'
+    archiveClassifier.set('javadoc')
     from 'build/docs/javadoc'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     duplicatesStrategy 'include'
-    classifier 'sources'
+    archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
 
