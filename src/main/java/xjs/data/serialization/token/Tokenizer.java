@@ -195,6 +195,9 @@ public abstract class Tokenizer implements Closeable {
             final char c = (char) reader.current;
             reader.read();
             if (!reader.isDigit()) {
+                if (reader.readInfinity()) {
+                    return this.newNumberToken(reader.endCapture(), Double.NEGATIVE_INFINITY);
+                }
                 reader.invalidateCapture();
                 return this.newSymbolToken(c);
             }
