@@ -82,7 +82,6 @@ tasks.javadoc {
 }
 
 artifacts {
-    archives(tasks.jar)
     archives(javadocJar)
     archives(sourcesJar)
 }
