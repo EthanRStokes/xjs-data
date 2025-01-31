@@ -139,7 +139,7 @@ publishing {
             create<MavenPublication>("mavenJava") {
                 from(components["java"])
 
-                artifact(javadocJar)
+                //artifact(javadocJar)
 
                 pom {
                     groupId = publishGroup
