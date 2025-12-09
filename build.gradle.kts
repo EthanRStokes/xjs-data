@@ -4,6 +4,7 @@ import java.io.FileNotFoundException
 import java.net.URI
 
 plugins {
+    id("io.github.gradle-nexus.publish-plugin") version("2.0.0")
     `maven-publish`
     java
     id("org.ajoberstar.grgit") version("+")
@@ -21,7 +22,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 
-    testImplementation("org.apache.commons:commons-lang3:3.12.0")
+    testImplementation("com.google.jimfs:jimfs:1.3.1")
+    testImplementation("org.apache.commons:commons-lang3:3.18.0")
     testImplementation("org.openjdk.jmh:jmh-generator-annprocess:1.33")
     testImplementation("org.openjdk.jmh:jmh-core:1.33")
 
